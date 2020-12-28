@@ -2,6 +2,7 @@
 
 namespace App\Models\Website;
 
+use App\Models\Actions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -26,6 +27,11 @@ class Review extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
+    public function actions()
+    {
+        return $this->morphMany(Actions::class, 'actionable');
     }
 
 }

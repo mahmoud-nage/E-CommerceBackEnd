@@ -2,17 +2,27 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Website\Address;
+use App\Models\Website\Area;
+use App\Models\Website\City;
+use App\Models\Website\Contact;
+use App\Models\Website\Country;
+use App\Models\Website\Notification;
+use App\Models\Website\Payment;
+use App\Models\Website\Review;
+use App\Models\Website\Ticket;
+use App\Models\Website\Zone;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, SoftDeletes;
-    protected $table = 'users';
+    use HasFactory, Notifiable, SoftDeletes, HasApiTokens;
 
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -101,66 +111,66 @@ class User extends Authenticatable
 
     public function notifications()
     {
-        return $this->belongsToMany('App\Models\Notification', 'notification_id');
+        return $this->belongsToMany(Notification::class, 'notification_id');
     }
 
     public function adminNotifications()
     {
-        return $this->hasMany('App\Models\Notification');
+        return $this->hasMany(Notification::class);
     }
 
     public function addresses()
     {
-        return $this->hasMany('App\Models\Address');
+        return $this->hasMany(Address::class);
     }
 
     public function tickets()
     {
-        return $this->hasMany('App\Models\Ticket');
+        return $this->hasMany(Ticket::class);
     }
 
     public function reviews()
     {
-        return $this->hasMany('App\Models\Review', 'user_id', 'id')->with('company');
+        return $this->hasMany(Review::class);
     }
-
-    public function wishlists()
-    {
-        return $this->belongsToMany('App\Models\Seller','wishlists');
-    }
-
-    public function reviewLikes()
-    {
-        return $this->belongsToMany('App\Models\Review', 'comment_likes', 'review_id');
-    }
+//
+//    public function wishlists()
+//    {
+//        return $this->belongsToMany('App\Models\Seller::,'wishlists');
+//    }
+//
+//    public function reviewLikes()
+//    {
+//        return $this->belongsToMany('App\Models\Review', 'comment_likes', 'review_id');
+//    }
 
     public function payments()
     {
-        return $this->hasMany('App\Models\Payment');
+        return $this->hasMany(Payment::class);
     }
 
     public function contacts()
     {
-        return $this->hasMany('App\Models\Contact');
+        return $this->hasMany(Contact::class);
     }
 
     public function country()
     {
-        return $this->belongsTo('App\Models\Country', 'country_id');
+        return $this->belongsTo(Country::class, 'country_id');
     }
 
     public function city()
     {
-        return $this->belongsTo('App\Models\City' ,'city_id');
+        return $this->belongsTo(City::class ,'city_id');
     }
 
     public function area()
     {
-        return $this->belongsTo('App\Models\Area', 'area_id');
+        return $this->belongsTo(Area::class, 'area_id');
     }
 
     public function zone()
     {
-        return $this->belongsTo('App\Models\Zone', 'zone_id');
+        return $this->belongsTo(Zone::class, 'zone_id');
     }
 }

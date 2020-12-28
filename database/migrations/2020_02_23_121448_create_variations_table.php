@@ -15,12 +15,14 @@ class CreateVariationsTable extends Migration {
 		Schema::create('variations', function(Blueprint $table)
 		{
 			$table->bigInteger('id', true)->unsigned();
-			$table->text('choices_values', 65535)->nullable();
+			$table->text('choices_values')->nullable();
 			$table->string('sku', 191)->nullable();
 			$table->string('qty', 191)->nullable();
 			$table->float('price', 10, 0)->nullable();
 			$table->bigInteger('product_id');
-			$table->integer('product_country_id')->nullable();
+			$table->integer('country_product_id')->nullable();
+            $table->string('image', 191)->nullable();
+            $table->boolean('active')->default(1);
 			$table->timestamps();
 		});
 	}

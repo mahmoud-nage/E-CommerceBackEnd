@@ -1,19 +1,14 @@
 <?php
 
-namespace App\General;
+namespace App\Models\Website;
 
+use App\Models\Actions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Laravel\Nova\Actions\Actionable;
-use Laravel\Nova\Fields\Searchable;
 
-class Zone extends Model 
+class Zone extends Model
 {
-    use searchable , actionable;
-
     protected $table = 'zones';
-    public $timestamps = true;
-
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
@@ -22,7 +17,12 @@ class Zone extends Model
 
     public function area()
     {
-        return $this->belongsTo('App\General\Area', 'area_id');
+        return $this->belongsTo(Area::class, 'area_id');
+    }
+
+    public function actions()
+    {
+        return $this->morphMany(Actions::class, 'actionable');
     }
 
 }

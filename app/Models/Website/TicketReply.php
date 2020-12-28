@@ -2,6 +2,7 @@
 
 namespace App\Models\Website;
 
+use App\Models\Actions;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,5 +16,10 @@ class TicketReply extends Model
     }
     public function user(){
     	return $this->belongsTo(User::class);
+    }
+
+    public function actions()
+    {
+        return $this->morphMany(Actions::class, 'actionable');
     }
 }

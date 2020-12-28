@@ -2,6 +2,7 @@
 
 namespace App\Models\Website;
 
+use App\Models\Actions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -23,6 +24,11 @@ class City extends Model
     public function areas()
     {
         return $this->hasMany('App\Models\Website\Area');
+    }
+
+    public function actions()
+    {
+        return $this->morphMany(Actions::class, 'actionable');
     }
 
 }

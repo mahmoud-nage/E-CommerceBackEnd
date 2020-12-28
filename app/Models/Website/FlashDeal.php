@@ -2,6 +2,7 @@
 
 namespace App\Models\Website;
 
+use App\Models\Actions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -18,5 +19,10 @@ class FlashDeal extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class, 'flash_deal_products');
+    }
+
+    public function actions()
+    {
+        return $this->morphMany(Actions::class, 'actionable');
     }
 }

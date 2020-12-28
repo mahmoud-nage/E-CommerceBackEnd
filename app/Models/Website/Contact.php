@@ -2,6 +2,7 @@
 
 namespace App\Models\Website;
 
+use App\Models\Actions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -18,6 +19,11 @@ class Contact extends Model
     public function user()
     {
         return $this->belongsTo('App\User', 'user_id');
+    }
+
+    public function actions()
+    {
+        return $this->morphMany(Actions::class, 'actionable');
     }
 
 }

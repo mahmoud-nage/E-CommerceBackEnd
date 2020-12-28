@@ -15,10 +15,13 @@ class CreateOptionsTable extends Migration {
 		Schema::create('options', function(Blueprint $table)
 		{
 			$table->bigInteger('id', true)->unsigned();
-			$table->string('value', 191);
+			$table->string('name_ar', 191)->nullable();
+			$table->string('name_en', 191);
+			$table->string('value', 191)->nullable();
 			$table->integer('is_color')->default(0);
 			$table->bigInteger('choice_id');
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

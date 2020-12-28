@@ -2,6 +2,8 @@
 
 namespace App\Models\Website;
 
+use App\Models\Actions;
+use App\Models\Main\Product;
 use Illuminate\Database\Eloquent\Model;
 
 class Wishlist extends Model
@@ -11,5 +13,10 @@ class Wishlist extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function actions()
+    {
+        return $this->morphMany(Actions::class, 'actionable');
     }
 }

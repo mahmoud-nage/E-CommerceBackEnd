@@ -15,8 +15,8 @@ class CreateStaffTable extends Migration {
 		Schema::create('staff', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->integer('user_id');
-			$table->integer('role_id');
+			$table->string('type', 191)->default('staff')->comment('admin, staff');
+			$table->string('role', 191)->nullable();
 			$table->timestamps();
 		});
 	}

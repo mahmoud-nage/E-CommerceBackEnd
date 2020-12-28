@@ -17,8 +17,10 @@ class CreateChoicesTable extends Migration {
 			$table->bigInteger('id', true)->unsigned();
 			$table->string('name_ar', 191)->nullable();
 			$table->string('name_en', 191);
-			$table->boolean('active')->default(1);
+            $table->bigInteger('product_id')->nullable();
+            $table->bigInteger('country_product_id')->nullable();
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

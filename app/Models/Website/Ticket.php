@@ -2,6 +2,7 @@
 
 namespace App\Models\Website;
 
+use App\Models\Actions;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,5 +19,10 @@ class Ticket extends Model
     {
         return $this->hasMany(TicketReply::class)->orderBy('created_at', 'desc');
     }
+    public function actions()
+    {
+        return $this->morphMany(Actions::class, 'actionable');
+    }
+
 
 }

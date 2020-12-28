@@ -2,6 +2,7 @@
 
 namespace App\Models\Website;
 
+use App\Models\Actions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -34,5 +35,10 @@ class Category extends Model
     public function subCategory()
     {
         return $this->belongsTo('App\Models\Website\Category','parent_id', 'id' )->where('type', 1);
+    }
+
+    public function actions()
+    {
+        return $this->morphMany(Actions::class, 'actionable');
     }
 }

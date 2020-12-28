@@ -3,77 +3,73 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateProductsTable extends Migration {
+class CreateProductsTable extends Migration
+{
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
-		Schema::create('products', function(Blueprint $table)
-		{
-			$table->integer('id', true);
-			$table->string('name_ar', 191)->nullable();
-			$table->string('name_en', 191);
-			$table->string('added_by', 10)->default('admin');
-			$table->integer('user_id');
-			$table->integer('category_id');
-			$table->integer('subcategory_id');
-			$table->integer('subsubcategory_id');
-			$table->integer('brand_id');
-			$table->string('photos', 2000)->nullable();
-			$table->string('thumbnail_img', 100)->nullable();
-			$table->string('featured_img', 100)->nullable();
-			$table->string('flash_deal_img', 100)->nullable();
-			$table->string('video_provider', 20)->nullable();
-			$table->string('video_link', 100)->nullable();
-			$table->text('tags', 16777215)->nullable();
-			$table->text('description_ar')->nullable();
-			$table->text('description_en', 65535);
-			$table->text('choice_options', 16777215)->nullable();
-			$table->text('colors', 16777215)->nullable();
-			$table->text('variations', 16777215);
-			$table->integer('todays_deal')->default(0);
-			$table->integer('published')->default(1);
-			$table->integer('featured')->default(0);
-			$table->integer('is_affiliate')->default(0);
-			$table->integer('main_quantity')->default(0);
-			$table->integer('current_stock')->default(0);
-			$table->string('unit', 20)->nullable();
-			$table->float('discount')->nullable();
-			$table->string('discount_type', 10)->nullable();
-			$table->float('tax')->nullable();
-			$table->string('tax_type', 10)->nullable();
-			$table->string('shipping_type', 20)->nullable()->default('flat_rate');
-			$table->float('shipping_cost')->nullable()->default(0.00);
-			$table->integer('num_of_sale')->default(0);
-			$table->text('meta_title', 16777215)->nullable();
-			$table->text('meta_description')->nullable();
-			$table->string('meta_img')->nullable();
-			$table->string('pdf')->nullable();
-			$table->text('slug', 16777215);
-			$table->float('rating')->default(0.00);
-			$table->integer('is_package')->default(0);
-			$table->integer('contest')->default(0);
-			$table->integer('location')->default(0);
-			$table->integer('page')->default(0);
-			$table->string('label_ar')->nullable();
-			$table->string('label_en')->nullable();
-			$table->timestamps();
-		});
-	}
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('products', function (Blueprint $table) {
+            $table->integer('id', true);
+            $table->string('name_ar', 191)->nullable();
+            $table->string('name_en', 191);
+            $table->longText('desc_ar')->nullable();
+            $table->longText('desc_en');
+            $table->string('label_ar')->nullable();
+            $table->string('label_en')->nullable();
+            $table->text('slug');
+
+            $table->integer('user_id');
+            $table->string('added_by', 191)->default('admin');
+
+            $table->integer('category_id')->nullable();
+            $table->integer('subCategory_id')->nullable();
+            $table->integer('subSubCategory_id')->nullable();
+            $table->integer('brand_id')->nullable();
+
+            $table->text('photos')->nullable();
+            $table->string('thumbnail_img', 191)->nullable();
+            $table->string('featured_img', 191)->nullable();
+            $table->string('flash_deal_img', 191)->nullable();
+
+            $table->longText('tags')->nullable();
+
+            $table->integer('active')->default(1);
+            $table->integer('in_home')->default(0);
+            $table->integer('is_affiliate')->default(0);
+            $table->integer('is_package')->default(0);
+
+            $table->integer('code')->nullable();
+            $table->integer('code_type')->nullable();
+            $table->integer('barcode')->nullable();
+
+            $table->string('unit', 20)->nullable();
+
+            $table->integer('num_of_sale')->default(0);
+            $table->float('rating')->default(0.00);
+
+            $table->text('meta_title')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->string('meta_img')->nullable();
+
+            $table->timestamps();
+            $table->softDeletes();
+        });
+    }
 
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::drop('products');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('products');
+    }
 
 }
