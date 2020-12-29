@@ -4,10 +4,11 @@ namespace App\Models\Main;
 
 use App\Models\Actions;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class OrderDetail extends Model
+class ReturnItem extends Model
 {
     protected $table = 'order_details';
     use SoftDeletes;
@@ -15,14 +16,14 @@ class OrderDetail extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'order_id', 'product_id', 'seller_id', 'supplier_id', 'product_name_en', 'product_name_ar', 'qty', 'unit_price',
+        'return_stock_id', 'product_id', 'seller_id', 'supplier_id', 'product_name_en', 'product_name_ar', 'qty', 'unit_price',
         'sub_total', 'total_tax', 'total_discount', 'discount_format', 'tax_format', 'variation', 'variation_id',
         'commission', 'payment_status', 'delivery_status', 'type', 'tax', 'discount'
     ];
 
     public function order()
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(ReturnStock::class, 'return_stock_id');
     }
 
     public function product()
@@ -49,5 +50,4 @@ class OrderDetail extends Model
     {
         return $this->morphMany(Actions::class, 'actionable');
     }
-
 }

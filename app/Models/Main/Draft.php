@@ -7,12 +7,13 @@ use App\Models\User;
 use App\Models\Website\Address;
 use App\Models\Website\Coupon;
 use App\Models\Website\Status;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Order extends Model
+class Draft extends Model
 {
-    protected $table = 'orders';
+    protected $table = 'drafts';
     use SoftDeletes;
     protected $dates = ['deleted_at','invoicedate','invoiceduedate'];
 
@@ -20,8 +21,8 @@ class Order extends Model
         'user_id', 'staff_id', 'guest_id', 'transaction_id', 'status_id', 'affiliate_id', 'coupon_id','address_id','coupon_type','coupon_name',
         'code', 'barcode', 'payment_status', 'pmethod', 'payment_details', 'shipping_address', 'shipment_details',
         'grand_total', 'sub_total', 'shipping', 'discount', 'tax', 'items', 'note', 'extra_discount', 'discount_format', 'currency',
-         'coupon_discount', 'viewed', 'device','type','invoicedate','invoiceduedate','awb'
-];
+        'coupon_discount', 'viewed', 'device','type','invoicedate','invoiceduedate','awb'
+    ];
 
 
     public function user()
@@ -66,6 +67,4 @@ class Order extends Model
     public function actions()
     {
         return $this->morphMany(Actions::class, 'actionable');
-    }
-
-}
+    }}

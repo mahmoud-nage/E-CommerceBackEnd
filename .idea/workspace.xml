@@ -2,78 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e35f1734-9444-44d5-b40c-3fc83de93fd6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Models/Main/Option.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Main/Order.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Main/OrderDetail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Main/PaymentMethod.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Main/Product.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Main/Variation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Users/Customer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Users/Staff.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Website/Address.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Website/Blog.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Website/BlogDepartment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_16_232446_create_blogs_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_16_232446_create_payment_methods_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/E-CommerceBackend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/E-CommerceBackend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Area.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Area.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Banner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Banner.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Brand.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Brand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/BusinessSettings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/BusinessSettings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Choice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Main/Choice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/City.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/City.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Contact.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Country.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Country.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Coupon.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Coupon.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/CouponUsage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/CouponUsage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Currency.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Currency.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Customer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/FlashDeal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/FlashDeal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/FlashDealProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/FlashDealProduct.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/GeneralSettings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/GeneralSettings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Link.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Link.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Notification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Notification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/NotificationUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/NotificationUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Payment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Policy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Policy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Review.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Review.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Search.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Search.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Status.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Subscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Subscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Ticket.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Ticket.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/TicketReply.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/TicketReply.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Tokens.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Tokens.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Wishlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Wishlist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Zone.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Zone.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_choices_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_choices_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_customers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_customers_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_options_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_options_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_payments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_payments_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_product_countries_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_products_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_sellers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_sellers_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_shops_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_staff_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_staff_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_variations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_variations_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_16_232446_create_about_us_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_16_232446_create_pages_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_01_133805_create_contexts_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_01_133854_create_context_users_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_09_173247_create_marketers_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_23_114334_create_dynamic_pages_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_25_090734_create_world_walls_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_25_093426_create_wall_users_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_25_151015_create_coupon_contests_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Main/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Main/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Main/OrderDetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Main/OrderDetail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_order_details_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_order_details_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_orders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_orders_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +153,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models/Website" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/migrations" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -233,8 +166,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\mahmoud\E-CommerceBackend\app\Models\Website" />
       <recent name="E:\mahmoud\E-CommerceBackend\database\migrations" />
+      <recent name="E:\mahmoud\E-CommerceBackend\app\Models\Website" />
       <recent name="E:\mahmoud\E-CommerceBackend\app\Models\Users" />
       <recent name="E:\mahmoud\E-CommerceBackend\app\Models\users" />
       <recent name="E:\mahmoud\E-CommerceBackend\app\Models\Main" />
@@ -260,7 +193,8 @@
       <workItem from="1609062283226" duration="1079000" />
       <workItem from="1609063470223" duration="2914000" />
       <workItem from="1609066664561" duration="14704000" />
-      <workItem from="1609147367312" duration="18530000" />
+      <workItem from="1609147367312" duration="18643000" />
+      <workItem from="1609234020935" duration="12710000" />
     </task>
     <servers />
   </component>
@@ -277,5 +211,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

@@ -10,7 +10,7 @@ use App\Models\Website\Status;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Order extends Model
+class ReturnStock extends Model
 {
     protected $table = 'orders';
     use SoftDeletes;
@@ -20,8 +20,8 @@ class Order extends Model
         'user_id', 'staff_id', 'guest_id', 'transaction_id', 'status_id', 'affiliate_id', 'coupon_id','address_id','coupon_type','coupon_name',
         'code', 'barcode', 'payment_status', 'pmethod', 'payment_details', 'shipping_address', 'shipment_details',
         'grand_total', 'sub_total', 'shipping', 'discount', 'tax', 'items', 'note', 'extra_discount', 'discount_format', 'currency',
-         'coupon_discount', 'viewed', 'device','type','invoicedate','invoiceduedate','awb'
-];
+        'coupon_discount', 'viewed', 'device','type','invoicedate','invoiceduedate','awb'
+    ];
 
 
     public function user()
@@ -67,5 +67,4 @@ class Order extends Model
     {
         return $this->morphMany(Actions::class, 'actionable');
     }
-
 }
