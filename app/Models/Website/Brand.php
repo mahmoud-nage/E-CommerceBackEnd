@@ -3,6 +3,7 @@
 namespace App\Models\Website;
 
 use App\Models\Actions;
+use App\Models\Main\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -13,11 +14,13 @@ class Brand extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = array('name_ar', 'name_en', 'logo', 'in_home', 'active', 'lat', 'lng', 'slug', 'meta_title', 'meta_description');
+    protected $fillable = array('name_ar', 'name_en', 'logo',
+        'in_home', 'active', 'slug', 'meta_title','meta_description'
+        );
 
     public function products()
     {
-        return $this->hasMany('App\Models\Product');
+        return $this->hasMany(Product::class);
     }
 
     public function actions()
