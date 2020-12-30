@@ -19,7 +19,7 @@ class CreatePayrollsTable extends Migration
             $table->string('month', 191);
             $table->string('year', 191)->nullable();
             $table->integer('amount')->default(1);
-            $table->integer('pmethod')->default('Cash');
+            $table->string('pmethod')->default('Cash');
             $table->timestamps();
         });
     }

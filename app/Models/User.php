@@ -12,6 +12,7 @@ use App\Models\Website\Payment;
 use App\Models\Website\Review;
 use App\Models\Website\Ticket;
 use App\Models\Website\Zone;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;

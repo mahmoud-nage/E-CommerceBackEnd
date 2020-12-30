@@ -43,6 +43,26 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'admin' => [
+            'throttle:admin',
+            \App\Http\Middleware\Auth\Admin::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+        'pos' => [
+            'throttle:pos',
+            \App\Http\Middleware\Auth\Pos::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+        'seller' => [
+            'throttle:seller',
+            \App\Http\Middleware\Auth\seller::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+        'affilate' => [
+            'throttle:affilate',
+            \App\Http\Middleware\Auth\affilate::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
     ];
 
     /**

@@ -23,7 +23,7 @@ class CreatePaymentsTable extends Migration {
 			$table->text('payment_details')->nullable();
 			$table->string('image', 191)->nullable();
 			$table->integer('status')->default(0);
-			$table->integer('provider')->default('web');
+			$table->string('provider')->default('web');
             $table->string('type')->default('seller')->comment('seller, affilate');
             $table->timestamps();
 		});

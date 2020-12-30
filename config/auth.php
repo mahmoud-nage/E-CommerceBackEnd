@@ -46,6 +46,26 @@ return [
             'provider' => 'Users',
         ],
 
+        'admin' => [
+            'driver' => 'passport',
+            'provider' => 'Users',
+        ],
+
+        'pos' => [
+            'driver' => 'passport',
+            'provider' => 'Users',
+        ],
+
+        'seller' => [
+            'driver' => 'passport',
+            'provider' => 'Users',
+        ],
+
+        'affilate' => [
+            'driver' => 'passport',
+            'provider' => 'Users',
+        ],
+
 
     ],
 
@@ -67,6 +87,7 @@ return [
     */
 
     'providers' => [
+
         'Users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,

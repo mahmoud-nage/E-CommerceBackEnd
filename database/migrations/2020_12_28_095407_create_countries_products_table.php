@@ -15,7 +15,6 @@ class CreateCountriesProductsTable extends Migration
     {
         Schema::create('countries_products', function (Blueprint $table) {
             $table->id();
-            $table->increments('id');
             $table->integer('product_id');
             $table->integer('country_id');
 

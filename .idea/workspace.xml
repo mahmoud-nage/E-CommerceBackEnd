@@ -2,11 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e35f1734-9444-44d5-b40c-3fc83de93fd6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/affilate.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/seller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/E-CommerceBackend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/E-CommerceBackend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Main/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Main/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Main/OrderDetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Main/OrderDetail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_order_details_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_order_details_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_orders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_orders_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_payments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_121448_create_payments_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_28_095407_create_countries_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_28_095407_create_countries_products_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_29_101543_create_payrolls_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_29_101543_create_payrolls_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +154,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/psr-http-message-bridge" />
       <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
       <path value="$PROJECT_DIR$/vendor/league/event" />
+      <path value="$PROJECT_DIR$/vendor/laravel/socialite" />
+      <path value="$PROJECT_DIR$/vendor/league/oauth1-client" />
     </include_path>
   </component>
   <component name="ProjectId" id="1mEcdw7J525SROBjGXMxbqCRSIh" />
@@ -153,7 +168,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/migrations" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/routes" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -166,11 +181,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\mahmoud\E-CommerceBackend\routes" />
       <recent name="E:\mahmoud\E-CommerceBackend\database\migrations" />
       <recent name="E:\mahmoud\E-CommerceBackend\app\Models\Website" />
       <recent name="E:\mahmoud\E-CommerceBackend\app\Models\Users" />
       <recent name="E:\mahmoud\E-CommerceBackend\app\Models\users" />
-      <recent name="E:\mahmoud\E-CommerceBackend\app\Models\Main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\mahmoud\E-CommerceBackend\app\Models\Main" />
@@ -194,7 +209,8 @@
       <workItem from="1609063470223" duration="2914000" />
       <workItem from="1609066664561" duration="14704000" />
       <workItem from="1609147367312" duration="18643000" />
-      <workItem from="1609234020935" duration="12710000" />
+      <workItem from="1609234020935" duration="13493000" />
+      <workItem from="1609319836965" duration="3816000" />
     </task>
     <servers />
   </component>

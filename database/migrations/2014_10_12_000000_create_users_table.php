@@ -20,10 +20,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
 
-
             $table->string('provider', 10)->nullable();
             $table->string('provider_id', 191)->nullable();
-            $table->string('remember_token', 191)->nullable();
             $table->string('api_token', 60)->nullable();
             $table->text('fcm_token')->nullable();
 
@@ -31,7 +29,6 @@ class CreateUsersTable extends Migration
             $table->string('gender', 10)->nullable();
             $table->string('address', 191)->nullable();
             $table->date('dob')->nullable();
-
 
             $table->bigInteger('country_id', )->nullable();
             $table->bigInteger('city_id', )->nullable();
