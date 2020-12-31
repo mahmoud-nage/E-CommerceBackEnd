@@ -10,13 +10,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Brand extends Model
 {
     protected $table = 'brands';
-
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
     protected $fillable = array('name_ar', 'name_en', 'logo',
-        'in_home', 'active', 'slug', 'meta_title','meta_description'
-        );
+        'in_home', 'active', 'slug', 'meta_title', 'meta_description'
+    );
 
     public function products()
     {

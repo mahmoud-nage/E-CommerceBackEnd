@@ -24,20 +24,33 @@ Route::middleware('auth:admin')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'brands'], function(){
     Route::get('/', function (Request $request){
-        (new App\Http\Controllers\Api\BrandController)->index($request);
+        $model = Brand::class;
+        $conditions = [
+            'active' => 1,
+        ];
+        $sortBy = null;
+        $sort = null;
+        $withCount = "products";
+        $with = "products";
+        return ((new App\Http\Controllers\BaseController)->allData($model,$conditions,$sortBy,$sort,$with,$withCount));
     });
+
     Route::get('/{id}', function ($id){
-        $data = (new App\Http\Controllers\BaseController)->getRecord(Brand::class, $id, null, ['products']);
-        return JsonResponse(200,'',$data);
+        return (new App\Http\Controllers\BaseController)->getRecord(Brand::class, $id, null, ['products']);
     });
-    Route::get('destroy/{id}', function ($id){
-        $data = (new App\Http\Controllers\BaseController)->destroyRecord(Brand::class, $id, null);
-        return JsonResponse(200,'',$data);
+
+    Route::get('/update/{id}', function ($request, $id){
+        return (new App\Http\Controllers\BaseController)->updateRecord(Brand::class, $id, $request, null);
+    });
+
+    Route::get('/store', function ($request){
+        return (new App\Http\Controllers\BaseController)->storeRecord(Brand::class, $request, null);
+    });
+
+    Route::get('/destroy/{id}', function ($id){
+        return (new App\Http\Controllers\BaseController)->destroyRecord(Brand::class, $id, 'logo');
     });
 });
-
-
-Route::resource('/brands', BrandController::class);
 
 
 

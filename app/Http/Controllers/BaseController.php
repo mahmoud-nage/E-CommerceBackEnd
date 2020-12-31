@@ -20,7 +20,7 @@ class BaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function allData($model, $conditions = [], $sortBy = 'created_at', $sort = 'desc', $eagerLoading = null)
+    public function allData($model, $conditions = [], $sortBy = 'created_at', $sort = 'desc', $withCount = null, $with=null)
     {
         if ($model) {
             if (!$sortBy) {
@@ -34,10 +34,19 @@ class BaseController extends Controller
             } else {
                 $data = $model::orderBy($sortBy, $sort);
             }
-            if ($eagerLoading) {
-                $data->$eagerLoading[0];
+
+            if($data){
+                if ($withCount && !$with) {
+                    $data->withCount($withCount);
+                } elseif ($with && !$withCount) {
+                    $data->with($with);
+                } elseif ($with && $withCount) {
+                    $data->with($with)->withCount($withCount);
+                }
             }
-            return $data;
+            return JsonResponse(200,'',$data->paginate(generalPagination())->toArray());
+
+//            return $data;
         }
     }
 
@@ -53,16 +62,22 @@ class BaseController extends Controller
             } else {
                 $data = $model::findOrFail($id);
             }
-            return $data;
+            return JsonResponse(200,'',$data);
         }
     }
 
-    public function destroyRecord($model, $id, $image)
+    public function destroyRecord($model, $id, $image=null)
     {
         if ($model) {
             $data = $model::findOrFail($id);
-            $data->delete();
-            return $data;
+            if($image){
+                $imageDel = deleteImage($data->$image);
+            }
+            if($data->delete()){
+                return JsonResponse(200,getMessage($model, 'destroy', 'success'));
+            }else{
+                return JsonResponse(200,getMessage($model, 'destroy', 'fail'));
+            }
         }
     }
 
