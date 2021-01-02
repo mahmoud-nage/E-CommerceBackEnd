@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 class BaseController extends Controller
 {
     protected $setting;
-
     public function __construct()
     {
         $this->setting = BusinessSettings::all();
@@ -20,7 +19,7 @@ class BaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function allData($model, $conditions = [], $sortBy = 'created_at', $sort = 'desc', $withCount = null, $with=null)
+    public function allData($model, $conditions = [], $sortBy = 'created_at', $sort = 'desc', $withCount = null, $with=null,$to=null)
     {
         if ($model) {
             if (!$sortBy) {
@@ -44,13 +43,30 @@ class BaseController extends Controller
                     $data->with($with)->withCount($withCount);
                 }
             }
-            return JsonResponse(200,'',$data->paginate(generalPagination())->toArray());
-
-//            return $data;
+            if($to == null){
+                $to = generalPagination();
+            }
+            return JsonResponse(200,'',$data->paginate($to)->toArray());
         }
     }
 
     public function getRecord($model, $id, $with = null, $withCount = null)
+    {
+        if ($model) {
+            if ($withCount && !$with) {
+                $data = $model::withCount($withCount)->findOrFail($id);
+            } elseif ($with && !$withCount) {
+                $data = $model::with($with)->findOrFail($id);
+            } elseif ($with && $withCount) {
+                $data = $model::with($with)->withCount($withCount)->findOrFail($id);
+            } else {
+                $data = $model::findOrFail($id);
+            }
+            return JsonResponse(200,'',$data);
+        }
+    }
+
+    public function search($model, $id, $with = null, $withCount = null)
     {
         if ($model) {
             if ($withCount && !$with) {

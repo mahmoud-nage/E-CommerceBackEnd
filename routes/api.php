@@ -29,24 +29,25 @@ Route::group(['prefix' => 'brands'], function(){
         ];
         $sortBy = null;
         $sort = null;
+        $to = $request->to;
         $withCount = "products";
         $with = "products";
-        return ((new App\Http\Controllers\BaseController)->allData($model,$conditions,$sortBy,$sort,$with,$withCount));
+        return ((new App\Http\Controllers\BaseController)->allData($model,$conditions,$sortBy,$sort,$with,$withCount,$to));
     });
 
     Route::get('/{id}', function ($id){
         return (new App\Http\Controllers\BaseController)->getRecord(Brand::class, $id, null, ['products']);
     });
 
-    Route::get('/{id}/update', function (Request $request, $id){
+    Route::put('/{id}/update', function (Request $request, $id){
         return (new App\Http\Controllers\Api\BrandController)->update($request,$id);
     });
 
     Route::post('/store', function (Request $request){
-        return (new App\Http\Controllers\Api\BrandController)->storeRecord(Brand::class, $request, null);
+        return (new App\Http\Controllers\Api\BrandController)->store($request);
     });
 
-    Route::delete('/destroy/{id}', function ($id){
+    Route::delete('/{id}/destroy', function ($id){
         return (new App\Http\Controllers\BaseController)->destroyRecord(Brand::class, $id, 'logo');
     });
 });

@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e35f1734-9444-44d5-b40c-3fc83de93fd6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/E-CommerceBackend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/E-CommerceBackend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/BrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/BrandController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Helpers/Helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Helpers/Helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Brand/DestroyRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Brand/StoreRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Brand/StoreRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Brand.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Brand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -220,7 +211,8 @@
       <workItem from="1609147367312" duration="18643000" />
       <workItem from="1609234020935" duration="13493000" />
       <workItem from="1609319836965" duration="18577000" />
-      <workItem from="1609406962984" duration="16891000" />
+      <workItem from="1609406962984" duration="17490000" />
+      <workItem from="1609430228950" duration="10583000" />
     </task>
     <servers />
   </component>

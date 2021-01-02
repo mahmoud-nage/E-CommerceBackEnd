@@ -31,11 +31,18 @@ if (!function_exists('UploadImage')) {
             mkdir($path, 755, true);
         }
         if (!$ext) {
-            $ext = $upload->getClientOriginalExtension();
+            $ext = explode('/', explode(':', substr($upload, 0, strpos($upload, ';')))[1])[1];
         }
 
         $filename = rand() . time() . '.' . $ext;
-        $filePath = $path . '/' . $filename;
+        $savePath = $path . '/' . $filename;
+        $filePath = env("APP_URL", "http://127.0.0.1:8000/").$path . '/' . $filename;
+
+        $replace = substr($upload, 0, strpos($upload, ',') + 1);
+
+        $image = str_replace($replace, '', $upload);
+
+        $upload = base64_decode(str_replace(' ', '+', $image));
 
         if ($resizeWidth && $resizeHeight) {
             $image = Image::make($upload)->resize($resizeWidth, $resizeHeight, function ($constraint) {
@@ -45,10 +52,35 @@ if (!function_exists('UploadImage')) {
             $image = Image::make($upload)->encode($ext, 75);
         }
 
-        $image->save(public_path($filePath));
+        $image->save(public_path($savePath));
         return $filePath;
     }
 }
+//if (!function_exists('UploadImage')) {
+//    function UploadImage($upload, $path, $resizeWidth = null, $resizeHeight = null, $ext = null)
+//    {
+//        if (!file_exists($path)) {
+//            mkdir($path, 755, true);
+//        }
+//        if (!$ext) {
+//            $ext = $upload->getClientOriginalExtension();
+//        }
+//
+//        $filename = rand() . time() . '.' . $ext;
+//        $filePath = $path . '/' . $filename;
+//
+//        if ($resizeWidth && $resizeHeight) {
+//            $image = Image::make($upload)->resize($resizeWidth, $resizeHeight, function ($constraint) {
+//                $constraint->aspectRatio();
+//            })->encode($ext, 75);
+//        } else {
+//            $image = Image::make($upload)->encode($ext, 75);
+//        }
+//
+//        $image->save(public_path($filePath));
+//        return $filePath;
+//    }
+//}
 
 if (!function_exists('deleteImage')) {
     function deleteImage($path)
@@ -57,14 +89,13 @@ if (!function_exists('deleteImage')) {
             $delete = File::delete($path);
             if ($delete) return 1;
             else return 0;
-        }
-        else return -1;
+        } else return -1;
     }
 }
 
 // to get response specific messages
 if (!function_exists('getMessage')) {
-    function getMessage($model , $action, $status)
+    function getMessage($model, $action, $status)
     {
         return 'messages';
     }
@@ -82,9 +113,9 @@ if (!function_exists('getMimesSupport')) {
 if (!function_exists('getRequiredStatus')) {
     function getRequiredStatus($value)
     {
-        if($value == 'ar'){
+        if ($value == 'ar') {
             return 'nullable';
-        }else{
+        } else {
             return 'required';
         }
     }
@@ -92,18 +123,17 @@ if (!function_exists('getRequiredStatus')) {
 
 // to get response specific messages
 if (!function_exists('generateMetaTages')) {
-    function generateMetaTages($title=null, $desc=null)
+    function generateMetaTages($title = null, $desc = null)
     {
-        if($title && $desc){
+        if ($title && $desc) {
             return [
                 'meta_title' => $title,
-                'meta_description' => substr(strip_tags($desc), 0, 150).'...',
+                'meta_description' => substr(strip_tags($desc), 0, 150) . '...',
             ];
-        }
-        elseif($title && !$desc){
+        } elseif ($title && !$desc) {
             return [
                 'title' => $title,
-                'desc' => $title.'...',
+                'desc' => $title . '...',
             ];
         }
     }

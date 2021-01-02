@@ -20,18 +20,18 @@ class BrandController extends BaseController
         $validator = Validator::make($request->all(), [
             'name_ar' => getRequiredStatus('ar') . '|max:191|string',
             'name_en' => getRequiredStatus('en') . '|max:191|string',
-            'logo' => 'required|mimes:' . getMimesSupport(),
+            'logo' => 'required',
             'meta_title' => 'nullable|max:191|string',
-            'meta_description' => 'nullable|text',
+            'meta_description' => 'nullable',
         ]);
         if ($validator->fails()) {
             return JsonResponse(500, $validator->errors()->messages());
         }
 
-
-        if ($request->hasFile('logo')) {
-            $path = '/uploads/Brand';
-            $fileName = UploadImage($request->file('logo'), $path);
+        if ($request->has('logo') && $request->logo) {
+            $path = 'uploads/Brand';
+            $fileName = UploadImage($request->logo, $path);
+            $request->merge(['logo' => $fileName]);
         }
         if (!$request->meta_title && !$request->meta_description) {
             if (getRequiredStatus('ar') && !getRequiredStatus('en')) {
@@ -39,9 +39,10 @@ class BrandController extends BaseController
             } else {
                 $meta = generateMetaTages($request->name_en);
             }
+            $request->merge(['meta_title' => $meta['meta_title'], 'meta_description' => $meta['meta_description']]);
         }
-        $request->merge(['logo' => $fileName, 'meta_title' => $meta['meta_title'], 'meta_description' => $meta['meta_description']]);
         $record = Brand::updateOrCreate($request->except('_method', '_token'));
+        return JsonResponse(200,getMessage('Brand', 'create', 'success'));
     }
 
     /**
@@ -56,25 +57,24 @@ class BrandController extends BaseController
         $validator = Validator::make($request->all(), [
             'name_ar' => 'max:191|string',
             'name_en' => 'max:191|string',
-            'logo' => 'mimes:'. getMimesSupport(),
             'meta_title' => 'nullable|max:191|string',
-            'meta_description' => 'nullable|text',
+            'meta_description' => 'nullable',
         ]);
 
         if ($validator->fails()) {
             return JsonResponse(500, $validator->errors()->messages());
         }
 
-
-        if ($request->hasFile('logo')) {
-            $path = '/uploads/Brand';
-            $fileName = UploadImage($request->file('logo'), $path);
-            $request->merge(['logo' => $fileName]);
-        }
         $record = Brand::find($id);
-        return JsonResponse(500,$request->input('name_ar'));
-
-        $record = $record->update($request->except('_method', '_token'));
+        $result = $record->update($request->except('_method', '_token', 'logo'));
+        if ($request->has('logo') && $request->logo) {
+            $path = 'uploads/Brand';
+            $fileName = UploadImage($request->logo, $path);
+            $request->merge(['logo' => $fileName]);
+            $record->update([
+                'logo' => $fileName
+            ]);
+        }
         return JsonResponse(200,getMessage('Brand', 'update', 'success'));
     }
 }
