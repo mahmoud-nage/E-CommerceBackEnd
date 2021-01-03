@@ -41,8 +41,10 @@ class BrandController extends BaseController
             }
             $request->merge(['meta_title' => $meta['meta_title'], 'meta_description' => $meta['meta_description']]);
         }
+        $request->slug = generateSlug($request->name_en);
+
         $record = Brand::updateOrCreate($request->except('_method', '_token'));
-        return JsonResponse(200,getMessage('Brand', 'create', 'success'));
+        return JsonResponse(200, getMessage('Brand', 'create', 'success'));
     }
 
     /**
@@ -75,6 +77,6 @@ class BrandController extends BaseController
                 'logo' => $fileName
             ]);
         }
-        return JsonResponse(200,getMessage('Brand', 'update', 'success'));
+        return JsonResponse(200, getMessage('Brand', 'update', 'success'));
     }
 }

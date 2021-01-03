@@ -56,31 +56,6 @@ if (!function_exists('UploadImage')) {
         return $filePath;
     }
 }
-//if (!function_exists('UploadImage')) {
-//    function UploadImage($upload, $path, $resizeWidth = null, $resizeHeight = null, $ext = null)
-//    {
-//        if (!file_exists($path)) {
-//            mkdir($path, 755, true);
-//        }
-//        if (!$ext) {
-//            $ext = $upload->getClientOriginalExtension();
-//        }
-//
-//        $filename = rand() . time() . '.' . $ext;
-//        $filePath = $path . '/' . $filename;
-//
-//        if ($resizeWidth && $resizeHeight) {
-//            $image = Image::make($upload)->resize($resizeWidth, $resizeHeight, function ($constraint) {
-//                $constraint->aspectRatio();
-//            })->encode($ext, 75);
-//        } else {
-//            $image = Image::make($upload)->encode($ext, 75);
-//        }
-//
-//        $image->save(public_path($filePath));
-//        return $filePath;
-//    }
-//}
 
 if (!function_exists('deleteImage')) {
     function deleteImage($path)
@@ -98,14 +73,6 @@ if (!function_exists('getMessage')) {
     function getMessage($model, $action, $status)
     {
         return 'messages';
-    }
-}
-
-// to get response specific messages
-if (!function_exists('getMimesSupport')) {
-    function getMimesSupport()
-    {
-        return 'jpeg,png,jpg,gif';
     }
 }
 

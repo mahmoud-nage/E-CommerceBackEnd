@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class BaseController extends Controller
 {
     protected $setting;
+
     public function __construct()
     {
         $this->setting = BusinessSettings::all();
@@ -19,7 +20,7 @@ class BaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function allData($model, $conditions = [], $sortBy = 'created_at', $sort = 'desc', $withCount = null, $with=null,$to=null)
+    public function allData($model, $conditions = [], $sortBy = 'created_at', $sort = 'desc', $with = null, $withCount = null, $to = null)
     {
         if ($model) {
             if (!$sortBy) {
@@ -34,7 +35,7 @@ class BaseController extends Controller
                 $data = $model::orderBy($sortBy, $sort);
             }
 
-            if($data){
+            if ($data) {
                 if ($withCount && !$with) {
                     $data->withCount($withCount);
                 } elseif ($with && !$withCount) {
@@ -43,10 +44,13 @@ class BaseController extends Controller
                     $data->with($with)->withCount($withCount);
                 }
             }
-            if($to == null){
+            if ($to == null && $to <= 0) {
                 $to = generalPagination();
             }
-            return JsonResponse(200,'',$data->paginate($to)->toArray());
+            if($to == -1){
+                return JsonResponse(200, '', $data->get()->toArray());
+            }
+            return JsonResponse(200, '', $data->paginate($to)->toArray());
         }
     }
 
@@ -62,15 +66,15 @@ class BaseController extends Controller
             } else {
                 $data = $model::findOrFail($id);
             }
-            return JsonResponse(200,'',$data);
+            return JsonResponse(200, '', $data);
         }
     }
 
-    public function search($model, $id, $with = null, $withCount = null)
+    public function search($model, $query, $with = null, $withCount = null)
     {
         if ($model) {
             if ($withCount && !$with) {
-                $data = $model::withCount($withCount)->findOrFail($id);
+                $data = $model::withCount($withCount)->where('');
             } elseif ($with && !$withCount) {
                 $data = $model::with($with)->findOrFail($id);
             } elseif ($with && $withCount) {
@@ -78,21 +82,21 @@ class BaseController extends Controller
             } else {
                 $data = $model::findOrFail($id);
             }
-            return JsonResponse(200,'',$data);
+            return JsonResponse(200, '', $data);
         }
     }
 
-    public function destroyRecord($model, $id, $image=null)
+    public function destroyRecord($model, $id, $image = null)
     {
         if ($model) {
             $data = $model::findOrFail($id);
-            if($image){
+            if ($image) {
                 $imageDel = deleteImage($data->$image);
             }
-            if($data->delete()){
-                return JsonResponse(200,getMessage($model, 'destroy', 'success'));
-            }else{
-                return JsonResponse(200,getMessage($model, 'destroy', 'fail'));
+            if ($data->delete()) {
+                return JsonResponse(200, getMessage($model, 'destroy', 'success'));
+            } else {
+                return JsonResponse(200, getMessage($model, 'destroy', 'fail'));
             }
         }
     }

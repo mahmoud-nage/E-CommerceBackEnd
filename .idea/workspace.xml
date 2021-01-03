@@ -4,8 +4,11 @@
     <list default="true" id="e35f1734-9444-44d5-b40c-3fc83de93fd6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/BrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/BrandController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BaseController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Helpers/Helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Helpers/Helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Website/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_30_104045_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_30_104045_create_categories_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,6 +216,8 @@
       <workItem from="1609319836965" duration="18577000" />
       <workItem from="1609406962984" duration="17490000" />
       <workItem from="1609430228950" duration="10583000" />
+      <workItem from="1609668482512" duration="3580000" />
+      <workItem from="1609675587560" duration="10594000" />
     </task>
     <servers />
   </component>
