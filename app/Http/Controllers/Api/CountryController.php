@@ -1,134 +1,68 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Api;
 
-use App\General\Area;
-use App\General\City;
-use App\General\Country;
-use App\General\Zone;
+use App\Models\Website\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class CountryController extends Controller
 {
-    public function index(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        $lang = 'ar';
-        if ($request->headers->has('lang')) {
-            $lang = $request->header('lang');
+        $validator = Validator::make($request->all(), [
+            'name_ar' => getRequiredStatus('ar') . '|max:191|string|unique:countries',
+            'name_en' => getRequiredStatus('en') . '|max:191|string|unique:countries',
+            'icon' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return JsonResponse(500, $validator->errors()->messages());
         }
+        if ($request->has('icon') && $request->icon) {
+            $path = 'uploads/Country';
+            $fileName = UploadImage($request->icon, $path);
+            $request->merge(['icon' => $fileName]);
+        }
+        $record = Country::updateOrCreate($request->except('_method', '_token'));
 
-        $countries = Country::where('active', 1)->get();
-        if ($countries->count() > 0) {
-            $data = array();
-            foreach ($countries as $country) {        /////////////  all countries with related cities with related areas with related zones
-                $cities = array();
-                if ($country->cities) {
-                    foreach ($country->cities->where('active', 1) as $city) {    ///////// all cities on every country
-                        $areas = array();
-                        if ($city->areas) {
-                            foreach ($city->areas->where('active', 1) as $area) {   ///////// all areas on every cities
-                                $zones = array();
-                                if ($area->zones) {
-                                    foreach ($area->zones->where('active', 1) as $zone) {    ///////// all zones on every areas
-                                        $zones[] = [
-                                            'id' => $zone->id,
-                                            'name' => $zone['name_' . $lang],
-                                        ];
-                                    }
-                                }
-                                $areas[] = [
-                                    'id' => $area->id,
-                                    'name' => $area['name_' . $lang],
-                                    'zones' => $zones
-                                ];
-                                $zones = [];
-                            }
-                        }
-                        $cities[] = [
-                            'id' => $city->id,
-                            'name' => $city['name_' . $lang],
-                            'areas' => $areas
-                        ];
-                        $areas = [];
-                    }
-                }
-                $data[] = [
-                    'id' => $country->id,
-                    'name' => $country['name_' . $lang],
-                    'icon' => $country->icon,
-                    'cities' => $cities,
-                    'languages' => \App\Language::where('active', 1)->select('id', 'name_' . $lang . ' as name', 'language as code', 'default')->get(),
-                    'default_lang' => \App\Language::where('active', 1)->where('default', 1)->first()->language,
-                ];
-                $cities = [];
-            }
-            return response()->json(['status' => 200, 'data' => $data], 200);
-        } else {
-            return response()->json(['status' => 400, 'message' => __('messages.no_data')], 200);
-        }
+        return JsonResponse(200, getMessage('Country', 'create', 'success'));
     }
-
-    public function countries(Request $request)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
-        $lang = 'ar';
-        if ($request->headers->has('lang')) {
-            $lang = $request->header('lang');
+        $validator = Validator::make($request->all(), [
+            'name_ar' => 'max:191|string',
+            'name_en' => 'max:191|string',
+        ]);
+
+        if ($validator->fails()) {
+            return JsonResponse(500, $validator->errors()->messages());
         }
 
-        $records = Country::where('active', 1)->select('id', 'name_' . $lang . ' as name', 'default', 'icon')->get();
-        if ($records->count() > 0) {
-            return response()->json(['status' => 200, 'data' => $records], 200);
-        } else {
-            return response()->json(['status' => 400, 'message' => __('messages.no_data')], 200);
+        $record = Country::find($id);
+        $result = $record->update($request->except('_method', '_token', 'icon'));
+        if ($request->has('icon') && $request->icon) {
+            $path = 'uploads/Country';
+            $fileName = UploadImage($request->icon, $path);
+            $request->merge(['icon' => $fileName]);
+            $record->update([
+                'icon' => $fileName
+            ]);
         }
-    }
-
-    public function cities(Request $request)
-    {
-        $lang = 'ar';
-        if ($request->headers->has('lang')) {
-            $lang = $request->header('lang');
-        }
-
-        $records = City::where('active', 1)->where('country_id', $request->country_id)->get();
-        if ($records->count() > 0) {
-            return response()->json(['status' => 200, 'data' => $records], 200);
-        } else {
-            return response()->json(['status' => 400, 'message' => __('messages.no_data')], 200);
-        }
-    }
-
-    public function areas(Request $request)
-    {
-        //  ********** Still not send banners and sliders ads ********** //
-        $lang = 'ar';
-        if ($request->headers->has('lang')) {
-            $lang = $request->header('lang');
-        }
-
-        $records = Area::where('active', 1)->where('city_id', $request->city_id)->get();
-        if ($records->count() > 0) {
-            return response()->json(['status' => 200, 'data' => $records], 200);
-        } else {
-            return response()->json(['status' => 400, 'message' => __('messages.no_data')], 200);
-        }
-    }
-
-    public function zones(Request $request)
-    {
-        //  ********** Still not send banners and sliders ads ********** //
-        $lang = 'ar';
-        if ($request->headers->has('lang')) {
-            $lang = $request->header('lang');
-        }
-
-        $records = Zone::where('active', 1)->where('area_id', $request->area_id)->get();
-        if ($records->count() > 0) {
-            return response()->json(['status' => 200, 'data' => $records], 200);
-        } else {
-            return response()->json(['status' => 400, 'message' => __('messages.no_data')], 200);
-        }
+        return JsonResponse(200, getMessage('Country', 'update', 'success'));
     }
 
 }
