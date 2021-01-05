@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e35f1734-9444-44d5-b40c-3fc83de93fd6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/AreaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CityController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CustomerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CountryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CountryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Users/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Users/Customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Website/Area.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Area.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Website/City.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/City.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Website/Country.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Country.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_30_104045_create_countries_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_30_104045_create_countries_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +173,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Api" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -181,8 +186,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\mahmoud\E-CommerceBackend\app\Http\Controllers" />
       <recent name="E:\mahmoud\E-CommerceBackend\app\Http\Controllers\Api" />
+      <recent name="E:\mahmoud\E-CommerceBackend\app\Http\Controllers" />
       <recent name="E:\mahmoud\E-CommerceBackend\routes" />
       <recent name="E:\mahmoud\E-CommerceBackend\database\migrations" />
       <recent name="E:\mahmoud\E-CommerceBackend\app\Models\Website" />
@@ -215,7 +220,8 @@
       <workItem from="1609430228950" duration="10583000" />
       <workItem from="1609668482512" duration="3580000" />
       <workItem from="1609675587560" duration="11051000" />
-      <workItem from="1609758544613" duration="4962000" />
+      <workItem from="1609758544613" duration="5529000" />
+      <workItem from="1609837227307" duration="13530000" />
     </task>
     <servers />
   </component>

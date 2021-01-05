@@ -13,7 +13,7 @@ class City extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = array('name_ar', 'name_en', 'country_id','delivery_price', 'delivery_free', 'lat', 'lng', 'active' );
+    protected $fillable = array('name_ar', 'name_en', 'country_id','delivery_price', 'delivery_free', 'lat', 'lon', 'delivery_time', 'active' );
     // protected $visible = array('name_ar', 'name_en', 'country_id', 'active');
 
     public function country()

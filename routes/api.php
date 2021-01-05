@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Api\BrandController;
+use App\Models\Users\Customer;
 use App\Models\Website\Area;
 use App\Models\Website\Brand;
 use App\Models\Website\Category;
+use App\Models\Website\City;
 use App\Models\Website\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,8 +25,8 @@ Route::middleware('auth:admin')->get('/user', function (Request $request) {
 });
 
 
-Route::group(['prefix' => 'brands'], function(){
-    Route::get('/', function (Request $request){
+Route::group(['prefix' => 'brands'], function () {
+    Route::get('/', function (Request $request) {
         $model = Brand::class;
         $conditions = [
         ];
@@ -34,28 +35,28 @@ Route::group(['prefix' => 'brands'], function(){
         $to = $request->to;
         $withCount = "products";
         $with = "products";
-        return ((new App\Http\Controllers\BaseController)->allData($model,$conditions,$sortBy,$sort,$with,$withCount,$to));
+        return ((new App\Http\Controllers\BaseController)->allData($model, $conditions, $sortBy, $sort, $with, $withCount, $to));
     });
 
-    Route::get('/{id}', function ($id){
+    Route::get('/{id}', function ($id) {
         return (new App\Http\Controllers\BaseController)->getRecord(Brand::class, $id, ['products'], null);
     });
 
-    Route::put('/{id}/update', function (Request $request, $id){
-        return (new App\Http\Controllers\Api\BrandController)->update($request,$id);
+    Route::put('/{id}/update', function (Request $request, $id) {
+        return (new App\Http\Controllers\Api\BrandController)->update($request, $id);
     });
 
-    Route::post('/store', function (Request $request){
+    Route::post('/store', function (Request $request) {
         return (new App\Http\Controllers\Api\BrandController)->store($request);
     });
 
-    Route::delete('/{id}/destroy', function ($id){
+    Route::delete('/{id}/destroy', function ($id) {
         return (new App\Http\Controllers\BaseController)->destroyRecord(Brand::class, $id, 'logo');
     });
 });
 
-Route::group(['prefix' => 'categories'], function(){
-    Route::get('/', function (Request $request){
+Route::group(['prefix' => 'categories'], function () {
+    Route::get('/', function (Request $request) {
         $model = Category::class;
         $conditions = [
             'type' => 0
@@ -65,36 +66,36 @@ Route::group(['prefix' => 'categories'], function(){
         $to = $request->to;
         $withCount = ["products", "subcategories"];
         $with = null;
-        return ((new App\Http\Controllers\BaseController)->allData($model,$conditions,$sortBy,$sort,$with,$withCount,$to));
+        return ((new App\Http\Controllers\BaseController)->allData($model, $conditions, $sortBy, $sort, $with, $withCount, $to));
     });
 
-    Route::get('/{id}', function ($id){
+    Route::get('/{id}', function ($id) {
         return (new App\Http\Controllers\BaseController)->getRecord(Category::class, $id, ['products', 'subcategories'], ["subcategories"]);
     });
 
-    Route::put('/{id}/update', function (Request $request, $id){
-        return (new App\Http\Controllers\Api\CategoryController)->update($request,$id);
+    Route::put('/{id}/update', function (Request $request, $id) {
+        return (new App\Http\Controllers\Api\CategoryController)->update($request, $id);
     });
 
-    Route::post('/store', function (Request $request){
+    Route::post('/store', function (Request $request) {
         return (new App\Http\Controllers\Api\CategoryController())->store($request);
     });
 
-    Route::delete('/{id}/destroy', function ($id){
+    Route::delete('/{id}/destroy', function ($id) {
         return (new App\Http\Controllers\BaseController)->destroyRecord(Category::class, $id, 'image');
     });
 });
 
-Route::group(['prefix' => 'subCategories'], function(){
-    Route::get('/', function (Request $request){
+Route::group(['prefix' => 'subCategories'], function () {
+    Route::get('/', function (Request $request) {
         $model = Category::class;
-        isset($request->category_id)?$cat = $request->category_id:$cat = null;
-        if($cat){
+        isset($request->category_id) ? $cat = $request->category_id : $cat = null;
+        if ($cat) {
             $conditions = [
                 'type' => 1,
                 'parent_id' => $request->category_id
             ];
-        }else{
+        } else {
             $conditions = [
                 'type' => 1
             ];
@@ -105,28 +106,28 @@ Route::group(['prefix' => 'subCategories'], function(){
         $to = $request->to;
         $withCount = ["products", "subSubcategories"];
         $with = ["category"];
-        return ((new App\Http\Controllers\BaseController)->allData($model,$conditions,$sortBy,$sort,$with,$withCount,$to));
+        return ((new App\Http\Controllers\BaseController)->allData($model, $conditions, $sortBy, $sort, $with, $withCount, $to));
     });
 
-    Route::get('/{id}', function ($id){
+    Route::get('/{id}', function ($id) {
         return (new App\Http\Controllers\BaseController)->getRecord(Category::class, $id, ['products', 'subSubcategories'], null);
     });
 
-    Route::put('/{id}/update', function (Request $request, $id){
-        return (new App\Http\Controllers\Api\CategoryController)->update($request,$id);
+    Route::put('/{id}/update', function (Request $request, $id) {
+        return (new App\Http\Controllers\Api\CategoryController)->update($request, $id);
     });
 
-    Route::post('/store', function (Request $request){
+    Route::post('/store', function (Request $request) {
         return (new App\Http\Controllers\Api\CategoryController())->store($request);
     });
 
-    Route::delete('/{id}/destroy', function ($id){
+    Route::delete('/{id}/destroy', function ($id) {
         return (new App\Http\Controllers\BaseController)->destroyRecord(Category::class, $id, 'image');
     });
 });
 
-Route::group(['prefix' => 'subSubCategories'], function(){
-    Route::get('/', function (Request $request){
+Route::group(['prefix' => 'subSubCategories'], function () {
+    Route::get('/', function (Request $request) {
         $model = Category::class;
         $conditions = [
             'type' => 2
@@ -136,28 +137,28 @@ Route::group(['prefix' => 'subSubCategories'], function(){
         $to = $request->to;
         $withCount = ["products"];
         $with = ["subCategory", 'getCategoryWithSubSub'];
-        return ((new App\Http\Controllers\BaseController)->allData($model,$conditions,$sortBy,$sort,$with,$withCount,$to));
+        return ((new App\Http\Controllers\BaseController)->allData($model, $conditions, $sortBy, $sort, $with, $withCount, $to));
     });
 
-    Route::get('/{id}', function ($id){
+    Route::get('/{id}', function ($id) {
         return (new App\Http\Controllers\BaseController)->getRecord(Category::class, $id, ['products'], null);
     });
 
-    Route::put('/{id}/update', function (Request $request, $id){
-        return (new App\Http\Controllers\Api\CategoryController)->update($request,$id);
+    Route::put('/{id}/update', function (Request $request, $id) {
+        return (new App\Http\Controllers\Api\CategoryController)->update($request, $id);
     });
 
-    Route::post('/store', function (Request $request){
+    Route::post('/store', function (Request $request) {
         return (new App\Http\Controllers\Api\CategoryController())->store($request);
     });
 
-    Route::delete('/{id}/destroy', function ($id){
+    Route::delete('/{id}/destroy', function ($id) {
         return (new App\Http\Controllers\BaseController)->destroyRecord(Category::class, $id, 'image');
     });
 });
 
-Route::group(['prefix' => 'countries'], function(){
-    Route::get('/', function (Request $request){
+Route::group(['prefix' => 'countries'], function () {
+    Route::get('/', function (Request $request) {
         $model = Country::class;
         $conditions = [
         ];
@@ -166,68 +167,65 @@ Route::group(['prefix' => 'countries'], function(){
         $to = $request->to;
         $withCount = ["products", "cities"];
         $with = null;
-        return ((new App\Http\Controllers\BaseController)->allData($model,$conditions,$sortBy,$sort,$with,$withCount,$to));
+        return ((new App\Http\Controllers\BaseController)->allData($model, $conditions, $sortBy, $sort, $with, $withCount, $to));
     });
 
-    Route::get('/{id}', function ($id){
-        return (new App\Http\Controllers\BaseController)->getRecord(Category::class, $id, ['products', 'cities'], ["cities"]);
+    Route::get('/{id}', function ($id) {
+        return (new App\Http\Controllers\BaseController)->getRecord(Country::class, $id, ['products', 'cities'], ["cities", 'products']);
     });
 
-    Route::put('/{id}/update', function (Request $request, $id){
-        return (new App\Http\Controllers\Api\CountryController)->update($request,$id);
+    Route::put('/{id}/update', function (Request $request, $id) {
+        return (new App\Http\Controllers\Api\CountryController)->update($request, $id);
     });
 
-    Route::post('/store', function (Request $request){
+    Route::post('/store', function (Request $request) {
         return (new App\Http\Controllers\Api\CountryController())->store($request);
     });
 
-    Route::delete('/{id}/destroy', function ($id){
+    Route::delete('/{id}/destroy', function ($id) {
         return (new App\Http\Controllers\BaseController)->destroyRecord(Country::class, $id, 'icon');
     });
 });
 
-Route::group(['prefix' => 'cities'], function(){
-    Route::get('/', function (Request $request){
-        $model = Category::class;
-        isset($request->category_id)?$cat = $request->category_id:$cat = null;
-        if($cat){
+Route::group(['prefix' => 'cities'], function () {
+    Route::get('/', function (Request $request) {
+        $model = City::class;
+        isset($request->country_id) ? $country_id = $request->country_id : $country_id = null;
+        if ($country_id) {
             $conditions = [
-                'type' => 1,
-                'parent_id' => $request->category_id
+                'country_id' => $request->country_id
             ];
-        }else{
+        } else {
             $conditions = [
-                'type' => 1
             ];
         }
-
         $sortBy = null;
         $sort = null;
         $to = $request->to;
-        $withCount = ["products", "subSubcategories"];
-        $with = ["category"];
-        return ((new App\Http\Controllers\BaseController)->allData($model,$conditions,$sortBy,$sort,$with,$withCount,$to));
+        $withCount = ["areas"];
+        $with = ["country"];
+        return ((new App\Http\Controllers\BaseController)->allData($model, $conditions, $sortBy, $sort, $with, $withCount, $to));
     });
 
-    Route::get('/{id}', function ($id){
-        return (new App\Http\Controllers\BaseController)->getRecord(Category::class, $id, ['category', 'subSubcategories'], null);
+    Route::get('/{id}', function ($id) {
+        return (new App\Http\Controllers\BaseController)->getRecord(City::class, $id, ['country'], ['areas']);
     });
 
-    Route::put('/{id}/update', function (Request $request, $id){
-        return (new App\Http\Controllers\Api\CategoryController)->update($request,$id);
+    Route::put('/{id}/update', function (Request $request, $id) {
+        return (new App\Http\Controllers\Api\CityController)->update($request, $id);
     });
 
-    Route::post('/store', function (Request $request){
-        return (new App\Http\Controllers\Api\CategoryController())->store($request);
+    Route::post('/store', function (Request $request) {
+        return (new App\Http\Controllers\Api\CityController())->store($request);
     });
 
-    Route::delete('/{id}/destroy', function ($id){
-        return (new App\Http\Controllers\BaseController)->destroyRecord(Category::class, $id, null);
+    Route::delete('/{id}/destroy', function ($id) {
+        return (new App\Http\Controllers\BaseController)->destroyRecord(City::class, $id, null);
     });
 });
 
-Route::group(['prefix' => 'areas'], function(){
-    Route::get('/', function (Request $request){
+Route::group(['prefix' => 'areas'], function () {
+    Route::get('/', function (Request $request) {
         $model = Area::class;
         $conditions = [
         ];
@@ -235,24 +233,48 @@ Route::group(['prefix' => 'areas'], function(){
         $sort = null;
         $to = $request->to;
         $withCount = null;
-        $with = ["city"];
-        return ((new App\Http\Controllers\BaseController)->allData($model,$conditions,$sortBy,$sort,$with,$withCount,$to));
+        $with = ["city", "country"];
+        return ((new App\Http\Controllers\BaseController)->allData($model, $conditions, $sortBy, $sort, $with, $withCount, $to));
     });
 
-    Route::get('/{id}', function ($id){
-        return (new App\Http\Controllers\BaseController)->getRecord(Category::class, $id, ['city'], null);
+    Route::get('/{id}', function ($id) {
+        return (new App\Http\Controllers\BaseController)->getRecord(Area::class, $id, ['city'], null);
     });
 
-    Route::put('/{id}/update', function (Request $request, $id){
-        return (new App\Http\Controllers\Api\CategoryController)->update($request,$id);
+    Route::put('/{id}/update', function (Request $request, $id) {
+        return (new App\Http\Controllers\Api\AreaController)->update($request, $id);
     });
 
-    Route::post('/store', function (Request $request){
-        return (new App\Http\Controllers\Api\CategoryController())->store($request);
+    Route::post('/store', function (Request $request) {
+        return (new App\Http\Controllers\Api\AreaController())->store($request);
     });
 
-    Route::delete('/{id}/destroy', function ($id){
-        return (new App\Http\Controllers\BaseController)->destroyRecord(Category::class, $id, null);
+    Route::delete('/{id}/destroy', function ($id) {
+        return (new App\Http\Controllers\BaseController)->destroyRecord(Area::class, $id, null);
+    });
+});
+
+Route::group(['prefix' => 'customers'], function () {
+    Route::get('/', function (Request $request) {
+        return ((new App\Http\Controllers\Api\CustomerController)->index($request));
+    });
+
+    Route::get('/{id}', function ($id) {
+        return (new App\Http\Controllers\BaseController)->getRecord(Customer::class, $id,
+            ['user','orders','reviews', 'wishlists', 'tickets', 'address']
+            , null);
+    });
+
+    Route::put('/{id}/update', function (Request $request, $id) {
+        return (new App\Http\Controllers\Api\CustomerController)->update($request, $id);
+    });
+
+    Route::post('/store', function (Request $request) {
+        return (new App\Http\Controllers\Api\AreaController())->store($request);
+    });
+
+    Route::delete('/{id}/destroy', function ($id) {
+        return (new App\Http\Controllers\BaseController)->destroyRecord(Customer::class, $id, null);
     });
 });
 

@@ -13,13 +13,16 @@ class Area extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = array('name_ar', 'name_en', 'city_id', 'active', 'lat', 'lng');
+    protected $fillable = array('name_ar', 'name_en', 'city_id', 'country_id', 'active', 'lat', 'lon');
 
+    public function country()
+    {
+        return $this->belongsTo('App\Models\Website\Country', 'country_id');
+    }
     public function city()
     {
         return $this->belongsTo('App\Models\Website\City', 'city_id');
     }
-
     public function zones()
     {
         return $this->hasMany('App\Models\Website\Zone');
