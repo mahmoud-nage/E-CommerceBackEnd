@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e35f1734-9444-44d5-b40c-3fc83de93fd6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/AreaController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CityController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CustomerController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SellerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CountryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CountryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Users/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Users/Customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Area.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Area.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/City.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/City.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Country.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Country.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Users/Seller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Users/Seller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Website/Review.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Review.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -222,6 +217,7 @@
       <workItem from="1609675587560" duration="11051000" />
       <workItem from="1609758544613" duration="5529000" />
       <workItem from="1609837227307" duration="13530000" />
+      <workItem from="1609925429022" duration="5871000" />
     </task>
     <servers />
   </component>
@@ -239,5 +235,21 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Models/Users/Seller.php</url>
+          <line>13</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/routes/api.php</url>
+          <line>29</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

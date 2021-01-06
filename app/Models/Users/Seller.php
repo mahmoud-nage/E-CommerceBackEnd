@@ -3,6 +3,8 @@
 namespace App\Models\Users;
 
 use App\Models\Actions;
+use App\Models\Main\Order;
+use App\Models\Main\OrderDetail;
 use App\Models\Main\Product;
 use App\Models\User;
 use App\Models\Website\Payment;
@@ -24,14 +26,22 @@ class Seller extends Model
         'desc_ar', 'desc_en', 'facebook', 'google', 'twitter', 'youtube', 'slug', 'meta_title', 'meta_description', 'type',
         'is_blocked', 'active');
 
-    public function payments()
-    {
-        return $this->hasMany(Payment::class);
-    }
 
     public function products()
     {
-        return $this->hasManyThrough(Product::class, User::class);
+        return $this->hasManyThrough(Product::class, User::class, 'userable_id', 'user_id');
+    }
+
+
+    public function payments()
+    {
+        return $this->morphMany(Payment::class, 'paymentable');
+    }
+
+    public function orderDetails()
+    {
+        return $this->hasManyThrough(OrderDetail::class, User::class, 'userable_id', 'seller_id')
+            ->distinct('order_id');
     }
 
     public function user()

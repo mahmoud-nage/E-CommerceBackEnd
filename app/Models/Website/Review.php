@@ -3,6 +3,7 @@
 namespace App\Models\Website;
 
 use App\Models\Actions;
+use App\Models\Main\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -18,15 +19,20 @@ class Review extends Model
     {
         return $this->belongsToMany('App\Models\User', 'comment_likes', 'user_id');
     }
-
-    public function seller()
-    {
-        return $this->belongsTo('App\Models\Website\Product', 'product_id');
-    }
+//
+//    public function seller()
+//    {
+//        return $this->belongsTo('App\Models\Website\Product', 'product_id');
+//    }
 
     public function user()
     {
         return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
     }
 
     public function actions()

@@ -1,11 +1,13 @@
 <?php
 
 use App\Models\Users\Customer;
+use App\Models\Users\Seller;
 use App\Models\Website\Area;
 use App\Models\Website\Brand;
 use App\Models\Website\Category;
 use App\Models\Website\City;
 use App\Models\Website\Country;
+use App\Models\Website\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -52,6 +54,38 @@ Route::group(['prefix' => 'brands'], function () {
 
     Route::delete('/{id}/destroy', function ($id) {
         return (new App\Http\Controllers\BaseController)->destroyRecord(Brand::class, $id, 'logo');
+    });
+});
+
+Route::group(['prefix' => 'reviews'], function () {
+    Route::get('/', function (Request $request) {
+        $model = Review::class;
+        $conditions = [
+        ];
+        $sortBy = null;
+        $sort = null;
+        $to = $request->to;
+        $withCount = ['product'=> function($q){
+            $q->with('user');
+        }, 'user'];
+        $with = null;
+        return ((new App\Http\Controllers\BaseController)->allData($model, $conditions, $sortBy, $sort, $with, $withCount, $to));
+    });
+
+    Route::get('/{id}', function ($id) {
+        return (new App\Http\Controllers\BaseController)->getRecord(Review::class, $id, ['product'], null);
+    });
+
+    Route::put('/{id}/update', function (Request $request, $id) {
+        return (new App\Http\Controllers\Api\BrandController)->update($request, $id);
+    });
+
+    Route::post('/store', function (Request $request) {
+        return (new App\Http\Controllers\Api\BrandController)->store($request);
+    });
+
+    Route::delete('/{id}/destroy', function ($id) {
+        return (new App\Http\Controllers\BaseController)->destroyRecord(Review::class, $id, 'logo');
     });
 });
 
@@ -261,7 +295,15 @@ Route::group(['prefix' => 'customers'], function () {
 
     Route::get('/{id}', function ($id) {
         return (new App\Http\Controllers\BaseController)->getRecord(Customer::class, $id,
-            ['user','orders','reviews', 'wishlists', 'tickets', 'address']
+            ['user' => function($q){
+                $q->with('country','city');
+            }, 'orders', 'reviews' => function($q){
+                $q->with('product');
+            }, 'wishlists' => function($q){
+                $q->with('product');
+            }, 'tickets', 'address' => function($q){
+                $q->with('country','city','area');
+            }]
             , null);
     });
 
@@ -270,7 +312,33 @@ Route::group(['prefix' => 'customers'], function () {
     });
 
     Route::post('/store', function (Request $request) {
-        return (new App\Http\Controllers\Api\AreaController())->store($request);
+        return (new App\Http\Controllers\Api\CustomerController())->store($request);
+    });
+
+    Route::delete('/{id}/destroy', function ($id) {
+        return (new App\Http\Controllers\BaseController)->destroyRecord(Customer::class, $id, null);
+    });
+});
+
+Route::group(['prefix' => 'sellers'], function () {
+    Route::get('/', function (Request $request) {
+        return ((new App\Http\Controllers\Api\SellerController)->index($request));
+    });
+
+    Route::get('/{id}', function ($id) {
+        return (new App\Http\Controllers\BaseController)->getRecord(Seller::class, $id,
+            ['user' => function($q){
+                $q->with('country','city');
+            }, 'orderDetails', 'tickets', 'payments']
+            , null);
+    });
+
+    Route::put('/{id}/update', function (Request $request, $id) {
+        return (new App\Http\Controllers\Api\SellerController)->update($request, $id);
+    });
+
+    Route::post('/store', function (Request $request) {
+        return (new App\Http\Controllers\Api\SellerController())->store($request);
     });
 
     Route::delete('/{id}/destroy', function ($id) {
