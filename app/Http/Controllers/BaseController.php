@@ -44,12 +44,13 @@ class BaseController extends Controller
                     $data->with($with)->withCount($withCount);
                 }
             }
-            if ($to == null && $to <= 0) {
-                $to = generalPagination();
-            }
             if($to == -1){
                 return JsonResponse(200, '', $data->get()->toArray());
             }
+            if ($to == null && $to <= 0) {
+                $to = generalPagination();
+            }
+
             return JsonResponse(200, '', $data->paginate($to)->toArray());
         }
     }
@@ -67,6 +68,21 @@ class BaseController extends Controller
                 $data = $model::findOrFail($id);
             }
             return JsonResponse(200, '', $data);
+        }
+    }
+
+    public function changeStatus($model, $id,$request)
+    {
+        if ($model) {
+            if ($request->has('type') && $request->type) {
+                $update = $model::findOrFail($id)->update([
+                    $request->type => $request->value
+                ]);
+                if ($update) {
+                    return JsonResponse(200, getMessage($model, 'changeStatus', 'success'));
+                }
+            }
+            return JsonResponse(200, getMessage($model, 'changeStatus', 'fail'));
         }
     }
 

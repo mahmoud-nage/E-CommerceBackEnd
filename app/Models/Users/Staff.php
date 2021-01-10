@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Staff extends Model
 {
-    protected $table = 'staffs';
+    protected $table = 'staff';
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];

@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e35f1734-9444-44d5-b40c-3fc83de93fd6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SellerController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/BlogController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/BlogDepartmentController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/NotificationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Users/Seller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Users/Seller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/BlogDepartment.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Users/Staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Users/Staff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Website/Blog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Blog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Website/BlogDepartment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/BlogDepartment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Website/Notification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Notification.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Website/Review.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Review.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
@@ -182,10 +189,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\mahmoud\E-CommerceBackend\app\Http\Controllers\Api" />
+      <recent name="E:\mahmoud\E-CommerceBackend\app\Models\Website" />
       <recent name="E:\mahmoud\E-CommerceBackend\app\Http\Controllers" />
       <recent name="E:\mahmoud\E-CommerceBackend\routes" />
       <recent name="E:\mahmoud\E-CommerceBackend\database\migrations" />
-      <recent name="E:\mahmoud\E-CommerceBackend\app\Models\Website" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\mahmoud\E-CommerceBackend\app\Models\Main" />
@@ -217,7 +224,8 @@
       <workItem from="1609675587560" duration="11051000" />
       <workItem from="1609758544613" duration="5529000" />
       <workItem from="1609837227307" duration="13530000" />
-      <workItem from="1609925429022" duration="5871000" />
+      <workItem from="1609925429022" duration="6482000" />
+      <workItem from="1610267891607" duration="13322000" />
     </task>
     <servers />
   </component>
@@ -243,11 +251,6 @@
           <url>file://$PROJECT_DIR$/app/Models/Users/Seller.php</url>
           <line>13</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/routes/api.php</url>
-          <line>29</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

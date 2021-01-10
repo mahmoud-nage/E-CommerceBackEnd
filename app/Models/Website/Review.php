@@ -4,6 +4,7 @@ namespace App\Models\Website;
 
 use App\Models\Actions;
 use App\Models\Main\Product;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -17,7 +18,7 @@ class Review extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\Models\User', 'comment_likes', 'user_id');
+        return $this->belongsToMany(User::class, 'comment_likes', 'user_id');
     }
 //
 //    public function seller()
@@ -27,7 +28,7 @@ class Review extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User', 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function product()

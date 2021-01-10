@@ -1,13 +1,9 @@
 <?php
 
-use App\Models\Users\Customer;
-use App\Models\Users\Seller;
-use App\Models\Website\Area;
-use App\Models\Website\Brand;
-use App\Models\Website\Category;
-use App\Models\Website\City;
-use App\Models\Website\Country;
-use App\Models\Website\Review;
+
+use App\Models\Website\Blog;
+use App\Models\Website\Notification;
+use App\Models\Website\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -57,6 +53,145 @@ Route::group(['prefix' => 'brands'], function () {
     });
 });
 
+Route::group(['prefix' => 'blogs'], function () {
+    Route::get('/', function (Request $request) {
+        $model = Blog::class;
+        $conditions = [
+        ];
+        $sortBy = null;
+        $sort = null;
+        $to = $request->to;
+        $withCount = null;
+        $with = ['user' => function($q){
+            $q->with('user');
+        },"department"];
+        return ((new App\Http\Controllers\BaseController)->allData($model, $conditions, $sortBy, $sort, $with, $withCount, $to));
+    });
+
+    Route::get('/{id}', function ($id) {
+        return (new App\Http\Controllers\BaseController)->getRecord(Blog::class, $id, ['department'], null);
+    });
+
+    Route::post('/{id}/changeStatus', function ($id, Request $request) {
+        return (new App\Http\Controllers\BaseController)->changeStatus(Blog::class, $id, $request);
+    });
+
+    Route::put('/{id}/update', function (Request $request, $id) {
+        return (new App\Http\Controllers\Api\BlogController)->update($request, $id);
+    });
+
+    Route::post('/store', function (Request $request) {
+        return (new App\Http\Controllers\Api\BlogController)->store($request);
+    });
+
+    Route::delete('/{id}/destroy', function ($id) {
+        return (new App\Http\Controllers\BaseController)->destroyRecord(Blog::class, $id, 'image');
+    });
+});
+
+Route::group(['prefix' => 'blogDepartments'], function () {
+    Route::get('/', function (Request $request) {
+        $model = BlogDepartment::class;
+        $conditions = [
+        ];
+        $sortBy = null;
+        $sort = null;
+        $to = $request->to;
+        $withCount = 'blogs';
+        $with = null;
+        return ((new App\Http\Controllers\BaseController)->allData($model, $conditions, $sortBy, $sort, $with, $withCount, $to));
+    });
+
+    Route::get('/{id}', function ($id) {
+        return (new App\Http\Controllers\BaseController)->getRecord(BlogDepartment::class, $id, null, null);
+    });
+
+    Route::post('/{id}/changeStatus', function ($id, Request $request) {
+        return (new App\Http\Controllers\BaseController)->changeStatus(BlogDepartment::class, $id, $request);
+    });
+
+    Route::put('/{id}/update', function (Request $request, $id) {
+        return (new App\Http\Controllers\Api\BlogDepartmentController)->update($request, $id);
+    });
+
+    Route::post('/store', function (Request $request) {
+        return (new App\Http\Controllers\Api\BlogDepartmentController)->store($request);
+    });
+
+    Route::delete('/{id}/destroy', function ($id) {
+        return (new App\Http\Controllers\BaseController)->destroyRecord(BlogDepartment::class, $id, null);
+    });
+});
+
+
+Route::group(['prefix' => 'tickets'], function () {
+    Route::get('/', function (Request $request) {
+        $model = Ticket::class;
+        $conditions = [
+        ];
+        $sortBy = null;
+        $sort = null;
+        $to = $request->to;
+        $withCount = 'ticketreplies';
+        $with = null;
+        return ((new App\Http\Controllers\BaseController)->allData($model, $conditions, $sortBy, $sort, $with, $withCount, $to));
+    });
+
+    Route::get('/{id}', function ($id) {
+        return (new App\Http\Controllers\BaseController)->getRecord(Ticket::class, $id, null, null);
+    });
+
+    Route::post('/{id}/changeStatus', function ($id, Request $request) {
+        return (new App\Http\Controllers\BaseController)->changeStatus(Ticket::class, $id, $request);
+    });
+
+    Route::put('/{id}/update', function (Request $request, $id) {
+        return (new App\Http\Controllers\Api\TicketController)->update($request, $id);
+    });
+
+    Route::post('/store', function (Request $request) {
+        return (new App\Http\Controllers\Api\TicketController)->store($request);
+    });
+
+    Route::delete('/{id}/destroy', function ($id) {
+        return (new App\Http\Controllers\BaseController)->destroyRecord(Ticket::class, $id, null);
+    });
+});
+
+Route::group(['prefix' => 'notifications'], function () {
+    Route::get('/', function (Request $request) {
+        $model = Notification::class;
+        $conditions = [
+        ];
+        $sortBy = null;
+        $sort = null;
+        $to = $request->to;
+        $withCount = 'users';
+        $with = 'user';
+        return ((new App\Http\Controllers\BaseController)->allData($model, $conditions, $sortBy, $sort, $with, $withCount, $to));
+    });
+
+    Route::get('/{id}', function ($id) {
+        return (new App\Http\Controllers\BaseController)->getRecord(Notification::class, $id, null, null);
+    });
+
+    Route::post('/{id}/changeStatus', function ($id, Request $request) {
+        return (new App\Http\Controllers\BaseController)->changeStatus(Notification::class, $id, $request);
+    });
+
+    Route::put('/{id}/update', function (Request $request, $id) {
+        return (new App\Http\Controllers\Api\NotificationController)->update($request, $id);
+    });
+
+    Route::post('/store', function (Request $request) {
+        return (new App\Http\Controllers\Api\NotificationController)->store($request);
+    });
+
+    Route::delete('/{id}/destroy', function ($id) {
+        return (new App\Http\Controllers\BaseController)->destroyRecord(Notification::class, $id, null);
+    });
+});
+
 Route::group(['prefix' => 'reviews'], function () {
     Route::get('/', function (Request $request) {
         $model = Review::class;
@@ -65,15 +200,19 @@ Route::group(['prefix' => 'reviews'], function () {
         $sortBy = null;
         $sort = null;
         $to = $request->to;
-        $withCount = ['product'=> function($q){
+        $withCount = null;
+        $with = ['product' => function ($q) {
             $q->with('user');
         }, 'user'];
-        $with = null;
         return ((new App\Http\Controllers\BaseController)->allData($model, $conditions, $sortBy, $sort, $with, $withCount, $to));
     });
 
     Route::get('/{id}', function ($id) {
-        return (new App\Http\Controllers\BaseController)->getRecord(Review::class, $id, ['product'], null);
+        return (new App\Http\Controllers\BaseController)->getRecord(Review::class, $id, ['product', 'user'], null);
+    });
+
+    Route::post('/{id}/changeStatus', function ($id, Request $request) {
+        return (new App\Http\Controllers\BaseController)->changeStatus(Review::class, $id, $request);
     });
 
     Route::put('/{id}/update', function (Request $request, $id) {
@@ -295,14 +434,14 @@ Route::group(['prefix' => 'customers'], function () {
 
     Route::get('/{id}', function ($id) {
         return (new App\Http\Controllers\BaseController)->getRecord(Customer::class, $id,
-            ['user' => function($q){
-                $q->with('country','city');
-            }, 'orders', 'reviews' => function($q){
+            ['user' => function ($q) {
+                $q->with('country', 'city');
+            }, 'orders', 'reviews' => function ($q) {
                 $q->with('product');
-            }, 'wishlists' => function($q){
+            }, 'wishlists' => function ($q) {
                 $q->with('product');
-            }, 'tickets', 'address' => function($q){
-                $q->with('country','city','area');
+            }, 'tickets', 'address' => function ($q) {
+                $q->with('country', 'city', 'area');
             }]
             , null);
     });
@@ -327,8 +466,8 @@ Route::group(['prefix' => 'sellers'], function () {
 
     Route::get('/{id}', function ($id) {
         return (new App\Http\Controllers\BaseController)->getRecord(Seller::class, $id,
-            ['user' => function($q){
-                $q->with('country','city');
+            ['user' => function ($q) {
+                $q->with('country', 'city');
             }, 'orderDetails', 'tickets', 'payments']
             , null);
     });

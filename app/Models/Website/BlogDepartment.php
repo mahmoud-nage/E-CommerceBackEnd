@@ -13,7 +13,7 @@ class BlogDepartment extends Model
     protected $fillable = ['name_ar', 'name_en', 'active'];
 
     public function blogs(){
-        return $this->hasMany(Blog::class,'blog_department_id','id');
+        return $this->hasMany(Blog::class,'blog_departments_id','id');
     }
 
     public function actions()
