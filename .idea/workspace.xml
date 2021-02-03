@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e35f1734-9444-44d5-b40c-3fc83de93fd6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/BlogController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/BlogDepartmentController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/NotificationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BlogDepartment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Users/Staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Users/Staff.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Blog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Blog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/BlogDepartment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/BlogDepartment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Website/Notification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Notification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Website/Review.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Website/Review.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +165,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Api" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Al-Murafiq-main/Al-Murafiq-main/Al-Murafiq-Main" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -225,7 +215,8 @@
       <workItem from="1609758544613" duration="5529000" />
       <workItem from="1609837227307" duration="13530000" />
       <workItem from="1609925429022" duration="6482000" />
-      <workItem from="1610267891607" duration="13322000" />
+      <workItem from="1610267891607" duration="13499000" />
+      <workItem from="1610353840733" duration="434000" />
     </task>
     <servers />
   </component>
